@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DeleteUser from "../DeleteUser/DeleteUser";
 import styled from "styled-components";
 import fakeUserData from "../../api/api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUsers } from "../../toolkit/slices/UserSlice";
 import DisplayUsers from "./DisplayUsers";
+import { fetchPosts } from "../../toolkit/slices/postsSlice";
 // import VIcon1 from "../../assets/Images/Icons/Group1RoundedSolid.svg";
 // import VIcon2 from "../../assets/Images/Icons/Group1RoundeOut.svg";
 const UserDetails = () => {
   const dispatch = useDispatch();
   const addNewUsers = (payload) => {
-    console.log("payload -->", payload);
     dispatch(addUsers(payload));
   };
+  const posts = useSelector((state) => {
+    return state.posts.posts;
+  });
+  const status = useSelector((state) => {
+    return state.status;
+  });
+  const error = useSelector((state) => {
+    return state.error;
+  });
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
   return (
     <Wrapper>
       <div className="content">
@@ -30,6 +48,9 @@ const UserDetails = () => {
         </div>
         <ul>
           <DisplayUsers />
+          {posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
         </ul>
         <hr />
         <DeleteUser />
