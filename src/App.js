@@ -7,14 +7,17 @@ import Todos from "./Components/Todos/Todos";
 import Albums from "./Components/Albums/Albums";
 import Photos from "./Components/Photos/Photos";
 import Address from "./Components/Address/Address";
+import TodoApp from "./Components/TodoApp/TodoApp";
+import AddTodo from "./Components/TodoApp/AddTodo";
+import TodoList from "./Components/TodoApp/TodoList";
 function App() {
   return (
     <Fragment>
-      <Navbar />
-      {/* <UserDetails/> */}
-      {/* <Todos /> */}
-      {/* <Albums /> */}
-      <Address/>
+      <div className="App">
+        <div className="header">Adv Redux Toolkit</div>
+        <AddTodo />
+        <TodoList />
+      </div>
     </Fragment>
   );
 }
