@@ -4,7 +4,6 @@ import { getAlbum } from "../../toolkit/slices/albumSlice";
 const Albums = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log("State -->", state.albums.data);
 
   if ((state.albums.isLoading)) {
     return <div>Loading....</div>;
