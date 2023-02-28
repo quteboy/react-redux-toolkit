@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 * {
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .App {
@@ -123,4 +123,20 @@ body {
 
 .deleted-todo button:hover {
   opacity: 0.9;
+}
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 7px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 15px;
+}
+.cardItem {
+  min-width: 200px;
+  padding: 7px;
+  background-color: darkkhaki;
+  color: black;
 }
